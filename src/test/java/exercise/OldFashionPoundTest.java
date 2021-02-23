@@ -14,7 +14,7 @@ class OldFashionPoundTest {
 
     private final Parser parser = mock(Parser.class);
 
-    private final OldFashionPound oldFashionPound= new OldFashionPound(parser);
+    private final OldFashionPound oldFashionPound = new OldFashionPound(parser);
 
     @Test
     void when_adding_two_prices_then_return_sum() {
@@ -56,6 +56,6 @@ class OldFashionPoundTest {
 
         String result = oldFashionPound.divide(PRICE, 3);
 
-        assertThat(result).isEqualTo(RESULT + "(remainder)");
+        assertThat(result).isEqualTo(RESULT + " (remainder)");
     }
 }

@@ -9,10 +9,21 @@ import static java.lang.Long.parseLong;
 public class PoundParser implements Parser {
     @Override
     public String getPenniesAsString(Long total) {
-        Long pound = total / (20 * 12);
-        Long scellins = (total % (20 * 12)) /12;
-        Long pennies = ((total % (20 * 12)) % 20) / 12;
-        return String.format("%sp %ss %sd",pound, scellins, pennies);
+        Long pound = Math.abs(total / (20 * 12));
+        Long scellins = Math.abs((total % (20 * 12)) /12);
+        Long pennies = Math.abs(((total % (20 * 12)) % 12));
+        return formatAsString(total, pound, scellins, pennies);
+    }
+
+    private String formatAsString(Long total, Long pound, Long scellins, Long pennies) {
+        return (total < 0 ? "- " : "") +
+                format(pound, "p ") +
+                format(scellins, "s ") +
+                format(pennies, "d");
+    }
+
+    private String format(Long pound, String symbol) {
+        return pound != 0 ? pound + symbol : "";
     }
 
     @Override

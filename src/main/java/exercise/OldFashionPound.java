@@ -31,6 +31,6 @@ public class OldFashionPound implements Pound {
         Long priceAsPennies = parser.getAsPennies(price);
         Long result = priceAsPennies / operator;
         Long remainder = priceAsPennies % operator;
-        return parser.getPenniesAsString(result) + "("+ parser.getPenniesAsString(remainder) + ")";
+        return parser.getPenniesAsString(result) + " ("+ parser.getPenniesAsString(remainder) + ")";
     }
 }
