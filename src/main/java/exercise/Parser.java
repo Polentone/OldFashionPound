@@ -1,4 +1,4 @@
-package test;
+package exercise;
 
 public interface Parser {
     Long getAsPennies(String price);

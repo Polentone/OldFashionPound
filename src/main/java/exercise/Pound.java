@@ -1,4 +1,4 @@
-package test;
+package exercise;
 
 public interface Pound {
     String sum(String price, String anotherPrice);
