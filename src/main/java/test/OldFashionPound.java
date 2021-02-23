@@ -25,4 +25,12 @@ public class OldFashionPound implements Pound {
         Long result = parser.getAsPennies(price) * operator;
         return parser.getPenniesAsString(result);
     }
+
+    @Override
+    public String divide(String price, Integer operator) {
+        Long priceAsPennies = parser.getAsPennies(price);
+        Long result = priceAsPennies / operator;
+        Long remainder = priceAsPennies % operator;
+        return parser.getPenniesAsString(result) + "("+ parser.getPenniesAsString(remainder) + ")";
+    }
 }

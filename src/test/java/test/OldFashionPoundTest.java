@@ -47,4 +47,15 @@ class OldFashionPoundTest {
 
         assertThat(result).isEqualTo(RESULT);
     }
+
+    @Test
+    void when_dividing_a_price_then_return_correct_price_and_correct_remainder() {
+        when(parser.getAsPennies(PRICE)).thenReturn(5L);
+        when(parser.getPenniesAsString(1L)).thenReturn(RESULT);
+        when(parser.getPenniesAsString(2L)).thenReturn("remainder");
+
+        String result = oldFashionPound.divide(PRICE, 3);
+
+        assertThat(result).isEqualTo(RESULT + "(remainder)");
+    }
 }
