@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 class OldFashionPoundTest {
     public static final String PRICE = "PRICE";
     public static final String ANOTHER_PRICE = "ANOTHER_PRICE";
+    public static final String RESULT = "result";
 
     private final Parser parser = mock(Parser.class);
 
@@ -19,11 +20,31 @@ class OldFashionPoundTest {
     void when_adding_two_prices_then_return_sum() {
         when(parser.getAsPennies(PRICE)).thenReturn(1L);
         when(parser.getAsPennies(ANOTHER_PRICE)).thenReturn(2L);
-        when(parser.getPenniesAsString(3L)).thenReturn("sum");
+        when(parser.getPenniesAsString(3L)).thenReturn(RESULT);
 
         String result = oldFashionPound.sum(PRICE, ANOTHER_PRICE);
 
-        assertThat(result).isEqualTo("sum");
+        assertThat(result).isEqualTo(RESULT);
     }
 
+    @Test
+    void when_subtracting_two_prices_then_return_result() {
+        when(parser.getAsPennies(PRICE)).thenReturn(2L);
+        when(parser.getAsPennies(ANOTHER_PRICE)).thenReturn(1L);
+        when(parser.getPenniesAsString(1L)).thenReturn(RESULT);
+
+        String result = oldFashionPound.subtract(PRICE, ANOTHER_PRICE);
+
+        assertThat(result).isEqualTo(RESULT);
+    }
+
+    @Test
+    void when_multiplicating_a_price_then_return_correct_price() {
+        when(parser.getAsPennies(PRICE)).thenReturn(5L);
+        when(parser.getPenniesAsString(15L)).thenReturn(RESULT);
+
+        String result = oldFashionPound.multiply(PRICE, 3);
+
+        assertThat(result).isEqualTo(RESULT);
+    }
 }

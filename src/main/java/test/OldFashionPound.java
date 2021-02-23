@@ -9,8 +9,20 @@ public class OldFashionPound implements Pound {
     }
 
     @Override
-    public String sum(String firstPrice, String secondPrice) {
-        Long sum = parser.getAsPennies(firstPrice) + parser.getAsPennies(secondPrice);
+    public String sum(String price, String anotherPrice) {
+        Long sum = parser.getAsPennies(price) + parser.getAsPennies(anotherPrice);
         return parser.getPenniesAsString(sum);
+    }
+
+    @Override
+    public String subtract(String price, String anotherPrice) {
+        Long result = parser.getAsPennies(price) - parser.getAsPennies(anotherPrice);
+        return parser.getPenniesAsString(result);
+    }
+
+    @Override
+    public String multiply(String price, Integer operator) {
+        Long result = parser.getAsPennies(price) * operator;
+        return parser.getPenniesAsString(result);
     }
 }
